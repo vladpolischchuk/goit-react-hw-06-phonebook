@@ -1,10 +1,18 @@
+import { PersistGate } from "redux-persist/integration/react";
+import { Provider } from "react-redux";
+import { store, persistor } from "redux/store";
+
 import Phonebook from "./modules/Phonebook/Phonebook";
 
 function App() {
   return (
-    <div className="App">
-      <Phonebook />
-    </div>
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
+        <>
+          <Phonebook />
+        </>
+      </PersistGate>
+    </Provider>
   );
 };
 
